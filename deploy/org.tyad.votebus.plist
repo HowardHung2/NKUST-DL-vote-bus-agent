@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- macOS: start the help desk at log-in and restart it if it stops.
+     Change the two paths below, then see DEPLOY.md step 4. -->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>org.tyad.votebus</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/YOUR_NAME/vote-bus-agent/deploy/start.sh</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHON</key>
+        <string>/opt/anaconda3/envs/ai26/bin/python</string>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+</dict>
+</plist>

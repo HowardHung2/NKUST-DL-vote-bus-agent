@@ -1,0 +1,13 @@
+.env
+*.db
+rules_vectors_*.npy
+__pycache__/
+venv/
+.venv/
+node_modules/
+build/
+dist/
+.DS_Store
+logs/
+# my own notes and old test runs; kept on this computer only
+private/
