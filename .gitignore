@@ -11,3 +11,4 @@ dist/
 logs/
 # my own notes and old test runs; kept on this computer only
 private/
+intent_vectors_*.npy

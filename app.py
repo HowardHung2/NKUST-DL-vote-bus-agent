@@ -36,7 +36,10 @@ from pathlib import Path
 import gradio as gr
 import numpy as np
 from dotenv import load_dotenv
-from openai import OpenAI
+from openai import OpenAI, RateLimitError
+
+import aggregation
+from agents import EmbeddingJudge, QuotaGuard, code_review, reviewer_messages, rule_judge
 
 HERE = Path(__file__).parent
 
@@ -298,6 +301,12 @@ def load_chunk_vectors():
 
 CHUNK_VECTORS = load_chunk_vectors()
 MIN_SCORE = 0.60      # below this, the rules do not cover the question (chosen from our test questions)
+
+# v2 (see agents.py and aggregation.py). AGENT_MODE=v1 runs the first version: one agent, no judges, no review.
+AGENT_MODE = (os.getenv("AGENT_MODE") or "v2").strip().lower()
+JUDGE_B = EmbeddingJudge(embed, EMBED_MODEL)
+TRUST_WEIGHTS = aggregation.load_weights()
+QUOTA = QuotaGuard(per_day=int(os.getenv("DAILY_CALL_LIMIT") or 450))
 
 print(f"Ready: {len(INFO_TOPICS)} info topics, {len(PLAN_PRICES)} plans, "
       f"{cursor.execute('SELECT COUNT(*) FROM routes').fetchone()[0]} routes, {len(CHUNKS)} rule chunks.")
@@ -716,9 +725,52 @@ def mask_personal(text):
     return text, hidden
 
 
-def run_agent(chat_history, order_id=None):
-    """Answer the last question in chat_history. order_id: the order the user logged in with (None = guest).
-    Returns (answer, trace)."""
+# v2 only: a few hard examples with their reasoning steps (few-shot chain of thought), added to the system prompt.
+FEW_SHOT_V2 = """
+# 6. Worked examples. Think through the steps silently, then give only the answer.
+Example 1. User: 我在臺中讀書，要回高雄投票，有哪些車？
+  Steps: the destination is 高雄 and the user is in 臺中 -> search_routes(to_station="高雄", from_station="臺中").
+  The result says no route starts at 臺中: it is only a get-off stop. So say that nobody can get on at 臺中, list some
+  routes to 高雄 with their first station (get_on_at), where the user must get on, and say they get off at 高雄.
+  Never tell the user to get off at 臺中.
+Example 2. User: 我被重複扣款了
+  Steps: a payment problem -> search_rules, then transfer_to_human, then give the official email. Promise nothing.
+Example 3. User: 我要回員林
+  Steps: search_routes(to_station="員林") finds no route -> say no route stops at 員林, name 1-3 stations near it
+  from all_stations (such as 彰化), and ask whether to look up routes to one of them.
+"""
+
+QUOTA_MESSAGE = ("今天的線上客服使用量已經到上限，請明天再來。座位可以直接看官方路線及剩餘座位表，"
+                 "其他問題請寄信到官方信箱 backhome@taiwanyad.org。")
+LOW_CONFIDENCE_NOTE = "（這題我不太確定，建議寄信到官方信箱 backhome@taiwanyad.org 再確認一次。）"
+FIXED_SENTENCES = {"login": LOGIN_NEEDED, "politics": POLITICS, "off_topic": OUT_OF_SCOPE}
+CALLS = contextvars.ContextVar("calls", default=None)     # chat calls made for the current question
+
+
+class QuotaExceeded(Exception):
+    pass
+
+
+def chat(**kwargs):
+    """Every chat model call goes through here: the quota guard counts it, and a 429 is tried once more."""
+    if not QUOTA.take():
+        raise QuotaExceeded()
+    counter = CALLS.get()
+    if counter is not None:
+        counter.append(1)
+    try:
+        return client.chat.completions.create(model=CHAT_MODEL, **kwargs)
+    except RateLimitError:
+        time.sleep(20)
+        if not QUOTA.take():
+            raise QuotaExceeded()
+        if counter is not None:
+            counter.append(1)
+        return client.chat.completions.create(model=CHAT_MODEL, **kwargs)
+
+
+def agent_loop(chat_history, order_id=None, extra_prompt=""):
+    """The v1 agent: one model chooses the tools and writes the answer. Returns (answer, trace, masked latest text)."""
     chat_history = clean_history(chat_history)
     SESSION_ORDER.set(normalize_order_id(order_id) or None)
     tool_specs, tool_functions = tools_for(order_id)
@@ -733,14 +785,12 @@ def run_agent(chat_history, order_id=None):
               "The user is a GUEST (not logged in). There is no order tool; for order questions use the "
               "guest sentence in part 4.")
     notes = [access, language_note(chat_history[-1]["content"])[0]["content"]] + ([MASK_NOTE] if masked_latest else [])
-    system = SYSTEM_PROMPT + "\n# For this message\n" + "\n".join(f"- {n}" for n in notes)
+    system = SYSTEM_PROMPT + extra_prompt + "\n# For this message\n" + "\n".join(f"- {n}" for n in notes)
     messages = [{"role": "system", "content": system}] + chat_history
     trace = []
 
     for step in range(MAX_STEPS):                      # one step = one API call
-        response = client.chat.completions.create(
-            model=CHAT_MODEL, messages=messages, tools=tool_specs, temperature=0.2,
-        )
+        response = chat(messages=messages, tools=tool_specs, temperature=0.2)
         message = response.choices[0].message
         if not message.tool_calls:
             return (message.content or "").strip(), trace
@@ -765,6 +815,108 @@ def run_agent(chat_history, order_id=None):
                              "content": json.dumps(result, ensure_ascii=False)})
 
     return "抱歉，這個問題我沒辦法處理完。" + NOT_FOUND, trace
+
+
+def judge_c(answer, trace):
+    """Judge C: what the answer agent did. The first tool it chose, or the fixed sentence it used."""
+    if trace:
+        return aggregation.TOOL_CATEGORY.get(trace[0]["tool"])
+    for category, sentence in (("my_order", LOGIN_NEEDED), ("politics", POLITICS), ("off_topic", OUT_OF_SCOPE)):
+        if sentence in answer:
+            return category
+    return None
+
+
+def route_table():
+    return {r["route_id"]: {"origin": r["origin"], "stop": r["stop"], "destination": r["destination"]}
+            for r in cursor.execute("SELECT route_id, origin, stop, destination FROM routes")}
+
+
+def review(answer, trace, user_text, history_text, category, agreement, order_id):
+    return code_review(answer, trace, user_text, history_text, route_table(), station_key, county_of,
+                       category=category, agreement=agreement, logged_in=bool(order_id), fixed=FIXED_SENTENCES)
+
+
+def run_agent_v2(chat_history, order_id=None):
+    """v2: judges A and B -> (fixed answer, or the answer agent = judge C) -> trust-weighted vote -> review
+    -> confidence. Returns (answer, trace, info)."""
+    history = clean_history(chat_history)
+    user_text, _ = mask_personal(history[-1]["content"])
+    history_text = "\n".join(m["content"] for m in history[:-1])
+    has_chinese = bool(re.search(r"[一-鿿]", user_text))
+
+    votes = {"A": rule_judge(user_text)}
+    try:
+        votes["B"], similarity = JUDGE_B.judge_vector(embed([user_text])[0])
+    except Exception:                                   # judge B is optional: the others still vote
+        votes["B"], similarity = None, None
+    info = {"votes": dict(votes), "similarity_B": similarity, "weights": TRUST_WEIGHTS, "short_cut": False}
+
+    # Both free judges agree on a refusal case: answer with the exact sentence, no chat call at all.
+    fixed = {"politics": POLITICS, "off_topic": OUT_OF_SCOPE}
+    if not order_id:
+        fixed["my_order"] = LOGIN_NEEDED
+    if has_chinese and votes["A"] and votes["A"] == votes["B"] and votes["A"] in fixed:
+        category, agreement, scores = aggregation.weighted_vote(votes, TRUST_WEIGHTS)
+        info.update(category=category, agreement=agreement, scores=scores, problems=[], review="passed",
+                    short_cut=True, confidence=aggregation.confidence(agreement, "passed"), needs_human=False)
+        return fixed[votes["A"]], [], info
+
+    answer, trace = agent_loop(chat_history, order_id, extra_prompt=FEW_SHOT_V2)
+    votes["C"] = judge_c(answer, trace)
+    category, agreement, scores = aggregation.weighted_vote(votes, TRUST_WEIGHTS)
+    info.update(votes=dict(votes), category=category, agreement=agreement, scores=scores)
+
+    # The review: code first; the reviewer agent only for a factual problem, and only if the quota allows it.
+    problems = review(answer, trace, user_text, history_text, category, agreement, order_id)
+    info["problems"] = problems
+    status = "passed"
+    fixed_by_code = [p for p in problems if p.startswith("FIXED:")]
+    factual = [p for p in problems if not p.startswith("FIXED:")]
+    if fixed_by_code:
+        answer, status = FIXED_SENTENCES[fixed_by_code[0].split(":")[1]], "fixed_by_code"
+    elif factual and QUOTA.near_limit():
+        status = "skipped"
+    elif factual:
+        rewritten = (chat(messages=reviewer_messages(user_text, answer, factual, trace), temperature=0.1)
+                     .choices[0].message.content or "").strip()
+        left = [p for p in review(rewritten, trace, user_text, history_text, category, agreement, order_id)
+                if not p.startswith("FIXED:")] if rewritten else factual
+        info["problems_after_rewrite"] = left
+        if rewritten and len(left) < len(factual):
+            answer = rewritten
+        status = "rewritten" if rewritten and not left else "failed"
+    info["review"] = status
+
+    info["confidence"] = aggregation.confidence(agreement, status)
+    refusal = any(s in answer for s in (POLITICS, OUT_OF_SCOPE, LOGIN_NEEDED, OTHER_ORDER))
+    info["needs_human"] = info["confidence"] < aggregation.CONFIDENCE_THRESHOLD and not refusal
+    if info["needs_human"] and "backhome@taiwanyad.org" not in answer:
+        answer += "\n\n" + LOW_CONFIDENCE_NOTE
+    return answer, trace, info
+
+
+def run_agent_full(chat_history, order_id=None, mode=None):
+    """Answer the last question. Returns (answer, trace, info); info is empty in v1."""
+    CALLS.set([])
+    try:
+        if (mode or AGENT_MODE) == "v1":
+            answer, trace = agent_loop(chat_history, order_id)
+            info = {}
+        else:
+            answer, trace, info = run_agent_v2(chat_history, order_id)
+    except QuotaExceeded:
+        answer, trace, info = QUOTA_MESSAGE, [], {"quota": "used up"}
+    info["chat_calls"] = len(CALLS.get())
+    info["mode"] = mode or AGENT_MODE
+    return answer, trace, info
+
+
+def run_agent(chat_history, order_id=None, mode=None):
+    """Answer the last question in chat_history. order_id: the order the user logged in with (None = guest).
+    Returns (answer, trace)."""
+    answer, trace, _ = run_agent_full(chat_history, order_id, mode)
+    return answer, trace
 
 
 # ---------------------------------------------------------------------------
@@ -838,10 +990,34 @@ def ip_failed(ip):
         IP_FAILS.setdefault(ip, []).append(time.time())
 
 
-def format_trace(trace):
+def format_v2(info):
+    """The v2 part of the staff panel: the judges' votes, the weighted vote, the review and the confidence."""
+    if not info or "votes" not in info:
+        return []
+    name = lambda c: f"{aggregation.CATEGORY_NAMES.get(c, c)}（{c}）" if c else "不投票"
+    lines = ["### v2 判斷與審查", ""]
+    for judge, label in aggregation.JUDGES.items():
+        if judge in info["votes"]:
+            extra = f"，相似度 {info['similarity_B']}" if judge == "B" and info.get("similarity_B") is not None else ""
+            lines.append(f"- 判斷者 {judge}（{label}，權重 {info['weights'].get(judge, 1.0):.2f}）：{name(info['votes'][judge])}{extra}")
+    lines += ["", f"加權投票：**{name(info.get('category'))}**，一致度 {info.get('agreement', 0):.2f}", ""]
+    if info.get("short_cut"):
+        lines.append("A 和 B 一致判定為拒答類別，直接用固定句子回答（沒有呼叫對話模型）。")
+    else:
+        problems = [p for p in info.get("problems", []) if not p.startswith("FIXED:")]
+        status = {"passed": "通過", "fixed_by_code": "程式改成固定句子", "rewritten": "審查 Agent 改寫後通過",
+                  "failed": "改寫後仍有問題", "skipped": "額度快用完，沒有改寫"}.get(info.get("review"), "")
+        lines.append(f"審查：{status}" + ("" if not problems else "；發現：" + " ".join(problems)))
+    flag = "，**需人工確認**" if info.get("needs_human") else ""
+    lines += ["", f"信心分數：**{info.get('confidence', 0):.2f}**{flag}（這題呼叫對話模型 {info.get('chat_calls', 0)} 次）", ""]
+    return lines
+
+
+def format_trace(trace, info=None):
+    v2 = format_v2(info)
     if not trace:
-        return "### 工具軌跡 Tools used\n\n（這次不需要工具）"
-    lines = ["### 工具軌跡 Tools used", ""]
+        return "\n".join(v2 + ["### 工具軌跡 Tools used", "", "（這次不需要工具）"])
+    lines = v2 + ["### 工具軌跡 Tools used", ""]
     for e in trace:
         lines += [f"**{e['step']}. {e['tool']}**", "",
                   f"arguments: `{json.dumps(e['arguments'], ensure_ascii=False)[:250]}`", ""]
@@ -907,8 +1083,8 @@ def answer_question(chat_history, session):
         return chat_history, EMPTY_TRACE, session, login_text(session)
     session = {**session, "seen": time.time()}
     try:
-        answer, trace = run_agent(chat_history, order_id=session["order_id"])
-        panel = format_trace(trace)
+        answer, trace, info = run_agent_full(chat_history, order_id=session["order_id"])
+        panel = format_trace(trace, info)
     except Exception as error:
         answer = f"（系統訊息）API 錯誤：{error}"
         panel = "### 工具軌跡 Tools used\n\n（呼叫失敗）"

@@ -1,0 +1,302 @@
+{
+ "d01": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.785
+ },
+ "d02": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.804
+ },
+ "d03": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.739
+ },
+ "d04": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.705
+ },
+ "d05": {
+  "A": "cost",
+  "B": "cost",
+  "similarity_B": 0.873
+ },
+ "d06": {
+  "A": "cost",
+  "B": "cost",
+  "similarity_B": 0.8
+ },
+ "d07": {
+  "A": "rule",
+  "B": "my_order",
+  "similarity_B": 0.688
+ },
+ "d08": {
+  "A": "rule",
+  "B": "rule",
+  "similarity_B": 0.71
+ },
+ "d09": {
+  "A": "rule",
+  "B": "human",
+  "similarity_B": 0.625
+ },
+ "d10": {
+  "A": "info",
+  "B": "rule",
+  "similarity_B": 0.649
+ },
+ "d11": {
+  "A": "info",
+  "B": "info",
+  "similarity_B": 0.777
+ },
+ "d12": {
+  "A": "my_order",
+  "B": "my_order",
+  "similarity_B": 0.823
+ },
+ "d13": {
+  "A": "my_order",
+  "B": "my_order",
+  "similarity_B": 0.787
+ },
+ "d14": {
+  "A": "human",
+  "B": "human",
+  "similarity_B": 0.844
+ },
+ "d15": {
+  "A": "human",
+  "B": "human",
+  "similarity_B": 0.776
+ },
+ "d16": {
+  "A": "politics",
+  "B": "politics",
+  "similarity_B": 0.884
+ },
+ "d17": {
+  "A": "off_topic",
+  "B": "off_topic",
+  "similarity_B": 0.73
+ },
+ "d18": {
+  "A": "off_topic",
+  "B": "personal",
+  "similarity_B": 0.699
+ },
+ "d19": {
+  "A": "personal",
+  "B": "personal",
+  "similarity_B": 0.848
+ },
+ "d20": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.746
+ },
+ "t01": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.729
+ },
+ "t02": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.697
+ },
+ "t03": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.804
+ },
+ "t04": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.705
+ },
+ "t05": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.801
+ },
+ "t06": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.704
+ },
+ "t07": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.825
+ },
+ "t08": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.799
+ },
+ "t09": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.779
+ },
+ "t10": {
+  "A": "route",
+  "B": "my_order",
+  "similarity_B": 0.698
+ },
+ "t11": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.778
+ },
+ "t12": {
+  "A": "cost",
+  "B": "cost",
+  "similarity_B": 0.747
+ },
+ "t13": {
+  "A": "rule",
+  "B": "cost",
+  "similarity_B": 0.802
+ },
+ "t14": {
+  "A": "cost",
+  "B": "cost",
+  "similarity_B": 0.787
+ },
+ "t15": {
+  "A": "rule",
+  "B": "route",
+  "similarity_B": 0.654
+ },
+ "t16": {
+  "A": "rule",
+  "B": "rule",
+  "similarity_B": 0.748
+ },
+ "t17": {
+  "A": "rule",
+  "B": "my_order",
+  "similarity_B": 0.682
+ },
+ "t18": {
+  "A": "rule",
+  "B": "rule",
+  "similarity_B": 0.716
+ },
+ "t19": {
+  "A": "rule",
+  "B": "rule",
+  "similarity_B": 0.822
+ },
+ "t20": {
+  "A": "rule",
+  "B": "route",
+  "similarity_B": 0.749
+ },
+ "t21": {
+  "A": "rule",
+  "B": "politics",
+  "similarity_B": 0.708
+ },
+ "t22": {
+  "A": "info",
+  "B": "info",
+  "similarity_B": 0.865
+ },
+ "t23": {
+  "A": "rule",
+  "B": "info",
+  "similarity_B": 0.824
+ },
+ "t24": {
+  "A": "my_order",
+  "B": "my_order",
+  "similarity_B": 0.634
+ },
+ "t25": {
+  "A": "my_order",
+  "B": "my_order",
+  "similarity_B": 0.823
+ },
+ "t26": {
+  "A": "my_order",
+  "B": "my_order",
+  "similarity_B": 0.767
+ },
+ "t27": {
+  "A": "my_order",
+  "B": "my_order",
+  "similarity_B": 0.634
+ },
+ "t28": {
+  "A": null,
+  "B": "human",
+  "similarity_B": 0.737
+ },
+ "t29": {
+  "A": "human",
+  "B": "human",
+  "similarity_B": 0.77
+ },
+ "t30": {
+  "A": "politics",
+  "B": "politics",
+  "similarity_B": 0.854
+ },
+ "t31": {
+  "A": "politics",
+  "B": "politics",
+  "similarity_B": 0.775
+ },
+ "t32": {
+  "A": "off_topic",
+  "B": "off_topic",
+  "similarity_B": 0.66
+ },
+ "t33": {
+  "A": "off_topic",
+  "B": "off_topic",
+  "similarity_B": 0.746
+ },
+ "t34": {
+  "A": "off_topic",
+  "B": "off_topic",
+  "similarity_B": 0.665
+ },
+ "t35": {
+  "A": "off_topic",
+  "B": "off_topic",
+  "similarity_B": 0.744
+ },
+ "t36": {
+  "A": "personal",
+  "B": "personal",
+  "similarity_B": 0.809
+ },
+ "t37": {
+  "A": "route",
+  "B": "route",
+  "similarity_B": 0.71
+ },
+ "t38": {
+  "A": "my_order",
+  "B": "rule",
+  "similarity_B": 0.799
+ },
+ "t39": {
+  "A": "rule",
+  "B": "rule",
+  "similarity_B": 0.807
+ },
+ "t40": {
+  "A": "cost",
+  "B": "cost",
+  "similarity_B": 0.82
+ }
+}

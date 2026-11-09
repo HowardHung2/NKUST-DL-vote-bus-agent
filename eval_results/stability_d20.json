@@ -1,0 +1,1504 @@
+{
+ "id": "d20",
+ "question": "我在臺中讀書，要回高雄投票，有哪些車？",
+ "times": 5,
+ "runs": {
+  "v1": [
+   {
+    "answer": "2026 青年民主返鄉列車沒有從臺中發車的車次，因為乘客只能在「首發站」上車，臺中車站僅提供下車。\n如果你想搭乘，可以考慮從「臺北車站」搭乘以下有到高雄的車次：\n- 車次 124：11/27 (Fri) 15:30 發車，剩餘座位 20\n- 車次 301：11/27 (Fri) 18:00 發車，剩餘座位 14\n- 車次 404：11/27 (Fri) 18:00 發車，剩餘座位 30\n- 車次 405：11/27 (Fri) 18:00 發車，剩餘座位 21\n- 車次 203：11/28 (Sat) 07:30 發車，剩餘座位 17\n\n（座位數依官方檢視表，更新日期 2026/11/03）",
+    "trace": [
+     {
+      "tool": "search_routes",
+      "arguments": {
+       "to_station": "高雄",
+       "from_station": "臺中"
+      },
+      "result": {
+       "seats": {
+        "source": "official Google Sheet",
+        "sheet_updated": "2026/11/03",
+        "read_at": "2026-11-09 22:13",
+        "text": "官方座位檢視表（表上更新日期 2026/11/03，本系統讀取時間 2026-11-09 22:13）"
+       },
+       "boarding_rule": "You can get on only at the first station (get_on_at). Stops are get-off only.",
+       "note": "No route starts at '臺中' and goes to '高雄'. Routes 124, 301 only pass '臺中' as a stop, where nobody can get on. The routes below start at other stations.",
+       "found": 9,
+       "routes": [
+        {
+         "route_id": "102",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "板橋車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 29,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "124",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 20,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "302",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "中壢車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 32,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "406",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "高雄車站",
+         "destination": "屏東車站",
+         "seats_left": 10,
+         "sold_out": false,
+         "get_off_type": "stop (get off only)"
+        },
+        {
+         "route_id": "301",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 14,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "304",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "新竹車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 25,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "404",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "桃園車站",
+         "destination": "高雄車站",
+         "seats_left": 30,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "405",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "斗六車站",
+         "destination": "高雄車站",
+         "seats_left": 21,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "203",
+         "date": "2026-11-28 (Sat)",
+         "depart_time": "07:30",
+         "gather_time": "not announced (see the trip notice)",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": null,
+         "destination": "高雄車站",
+         "seats_left": 17,
+         "sold_out": false,
+         "get_off_type": "destination"
+        }
+       ]
+      }
+     }
+    ],
+    "info": {
+     "chat_calls": 2,
+     "mode": "v1"
+    },
+    "problems": [],
+    "rules_ok": true
+   },
+   {
+    "answer": "2026 青年民主返鄉列車沒有從臺中出發的班次，且中途停靠站僅供下車，無法在臺中上車。\n你可以選擇從臺北、板橋、中壢或新竹等首發站上車返回高雄：\n- **124號**：11/27 (五) 15:30 臺北出發，經臺中（僅下車），終點高雄，剩餘座位 20。\n- **301號**：11/27 (五) 18:00 臺北出發，經臺中（僅下車），終點高雄，剩餘座位 14。\n- **404號**：11/27 (五) 18:00 臺北出發，經桃園，終點高雄，剩餘座位 30。\n- **405號**：11/27 (五) 18:00 臺北出發，經斗六，終點高雄，剩餘座位 21。\n（座位數依官方檢視表，更新日期 2026/11/03）",
+    "trace": [
+     {
+      "tool": "search_routes",
+      "arguments": {
+       "to_station": "高雄",
+       "from_station": "臺中"
+      },
+      "result": {
+       "seats": {
+        "source": "official Google Sheet",
+        "sheet_updated": "2026/11/03",
+        "read_at": "2026-11-09 22:13",
+        "text": "官方座位檢視表（表上更新日期 2026/11/03，本系統讀取時間 2026-11-09 22:13）"
+       },
+       "boarding_rule": "You can get on only at the first station (get_on_at). Stops are get-off only.",
+       "note": "No route starts at '臺中' and goes to '高雄'. Routes 124, 301 only pass '臺中' as a stop, where nobody can get on. The routes below start at other stations.",
+       "found": 9,
+       "routes": [
+        {
+         "route_id": "102",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "板橋車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 29,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "124",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 20,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "302",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "中壢車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 32,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "406",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "高雄車站",
+         "destination": "屏東車站",
+         "seats_left": 10,
+         "sold_out": false,
+         "get_off_type": "stop (get off only)"
+        },
+        {
+         "route_id": "301",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 14,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "304",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "新竹車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 25,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "404",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "桃園車站",
+         "destination": "高雄車站",
+         "seats_left": 30,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "405",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "斗六車站",
+         "destination": "高雄車站",
+         "seats_left": 21,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "203",
+         "date": "2026-11-28 (Sat)",
+         "depart_time": "07:30",
+         "gather_time": "not announced (see the trip notice)",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": null,
+         "destination": "高雄車站",
+         "seats_left": 17,
+         "sold_out": false,
+         "get_off_type": "destination"
+        }
+       ]
+      }
+     }
+    ],
+    "info": {
+     "chat_calls": 2,
+     "mode": "v1"
+    },
+    "problems": [],
+    "rules_ok": true
+   },
+   {
+    "answer": "「2026 青年民主返鄉列車」的所有班次僅能從第一站上車（中途站如臺中僅供下車，無法上車）。\n若你要回高雄，可以參考從其他起點搭乘的班次，例如：\n- 車次 124（11/27 15:30 臺北出發，經臺中下車至高雄）：剩餘 20 席\n- 車次 301（11/27 18:00 臺北出發，經臺中下車至高雄）：剩餘 14 席\n- 車次 405（11/27 18:00 臺北出發，經斗六下車至高雄）：剩餘 21 席\n（座位數依官方檢視表，更新日期 2026/11/03）",
+    "trace": [
+     {
+      "tool": "search_routes",
+      "arguments": {
+       "to_station": "高雄",
+       "from_station": "臺中"
+      },
+      "result": {
+       "seats": {
+        "source": "official Google Sheet",
+        "sheet_updated": "2026/11/03",
+        "read_at": "2026-11-09 22:13",
+        "text": "官方座位檢視表（表上更新日期 2026/11/03，本系統讀取時間 2026-11-09 22:13）"
+       },
+       "boarding_rule": "You can get on only at the first station (get_on_at). Stops are get-off only.",
+       "note": "No route starts at '臺中' and goes to '高雄'. Routes 124, 301 only pass '臺中' as a stop, where nobody can get on. The routes below start at other stations.",
+       "found": 9,
+       "routes": [
+        {
+         "route_id": "102",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "板橋車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 29,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "124",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 20,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "302",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "中壢車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 32,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "406",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "高雄車站",
+         "destination": "屏東車站",
+         "seats_left": 10,
+         "sold_out": false,
+         "get_off_type": "stop (get off only)"
+        },
+        {
+         "route_id": "301",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 14,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "304",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "新竹車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 25,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "404",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "桃園車站",
+         "destination": "高雄車站",
+         "seats_left": 30,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "405",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "斗六車站",
+         "destination": "高雄車站",
+         "seats_left": 21,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "203",
+         "date": "2026-11-28 (Sat)",
+         "depart_time": "07:30",
+         "gather_time": "not announced (see the trip notice)",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": null,
+         "destination": "高雄車站",
+         "seats_left": 17,
+         "sold_out": false,
+         "get_off_type": "destination"
+        }
+       ]
+      }
+     }
+    ],
+    "info": {
+     "chat_calls": 2,
+     "mode": "v1"
+    },
+    "problems": [],
+    "rules_ok": true
+   },
+   {
+    "answer": "去高雄的班次中，有經過臺中車站下車的班次為：\n- **124號車**（2026-11-27 15:30 發車，臺北發車，臺中為下車點）：剩餘座位 20\n- **301號車**（2026-11-27 18:00 發車，臺北發車，臺中為下車點）：剩餘座位 14\n（注意：中途站僅供下車，乘客僅能於首發站上車。）\n（座位數依官方檢視表，更新日期 2026/11/03）",
+    "trace": [
+     {
+      "tool": "search_routes",
+      "arguments": {
+       "to_station": "高雄"
+      },
+      "result": {
+       "seats": {
+        "source": "official Google Sheet",
+        "sheet_updated": "2026/11/03",
+        "read_at": "2026-11-09 22:13",
+        "text": "官方座位檢視表（表上更新日期 2026/11/03，本系統讀取時間 2026-11-09 22:13）"
+       },
+       "boarding_rule": "You can get on only at the first station (get_on_at). Stops are get-off only.",
+       "found": 9,
+       "routes": [
+        {
+         "route_id": "102",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "板橋車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 29,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "124",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 20,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "302",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "中壢車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 32,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "406",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "高雄車站",
+         "destination": "屏東車站",
+         "seats_left": 10,
+         "sold_out": false,
+         "get_off_type": "stop (get off only)"
+        },
+        {
+         "route_id": "301",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 14,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "304",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "新竹車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 25,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "404",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "桃園車站",
+         "destination": "高雄車站",
+         "seats_left": 30,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "405",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "斗六車站",
+         "destination": "高雄車站",
+         "seats_left": 21,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "203",
+         "date": "2026-11-28 (Sat)",
+         "depart_time": "07:30",
+         "gather_time": "not announced (see the trip notice)",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": null,
+         "destination": "高雄車站",
+         "seats_left": 17,
+         "sold_out": false,
+         "get_off_type": "destination"
+        }
+       ]
+      }
+     }
+    ],
+    "info": {
+     "chat_calls": 2,
+     "mode": "v1"
+    },
+    "problems": [],
+    "rules_ok": true
+   },
+   {
+    "answer": "2026 青年民主返鄉列車沒有從臺中出發的班次，且中途停靠站僅供下車，不能上車。\n不過，你可以選擇搭車到其他有發車的鄰近站點上車，例如：新竹車站、板橋車站或臺北車站。\n請問要幫你查詢從「新竹車站」或「臺北車站」出發到高雄的班次嗎？",
+    "trace": [
+     {
+      "tool": "search_routes",
+      "arguments": {
+       "to_station": "高雄",
+       "from_station": "臺中"
+      },
+      "result": {
+       "seats": {
+        "source": "official Google Sheet",
+        "sheet_updated": "2026/11/03",
+        "read_at": "2026-11-09 22:13",
+        "text": "官方座位檢視表（表上更新日期 2026/11/03，本系統讀取時間 2026-11-09 22:13）"
+       },
+       "boarding_rule": "You can get on only at the first station (get_on_at). Stops are get-off only.",
+       "note": "No route starts at '臺中' and goes to '高雄'. Routes 124, 301 only pass '臺中' as a stop, where nobody can get on. The routes below start at other stations.",
+       "found": 9,
+       "routes": [
+        {
+         "route_id": "102",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "板橋車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 29,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "124",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 20,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "302",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "中壢車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 32,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "406",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "高雄車站",
+         "destination": "屏東車站",
+         "seats_left": 10,
+         "sold_out": false,
+         "get_off_type": "stop (get off only)"
+        },
+        {
+         "route_id": "301",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 14,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "304",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "新竹車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 25,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "404",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "桃園車站",
+         "destination": "高雄車站",
+         "seats_left": 30,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "405",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "斗六車站",
+         "destination": "高雄車站",
+         "seats_left": 21,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "203",
+         "date": "2026-11-28 (Sat)",
+         "depart_time": "07:30",
+         "gather_time": "not announced (see the trip notice)",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": null,
+         "destination": "高雄車站",
+         "seats_left": 17,
+         "sold_out": false,
+         "get_off_type": "destination"
+        }
+       ]
+      }
+     }
+    ],
+    "info": {
+     "chat_calls": 2,
+     "mode": "v1"
+    },
+    "problems": [],
+    "rules_ok": true
+   }
+  ],
+  "v2": [
+   {
+    "answer": "返鄉列車規定「乘客只能在起點站上車」，中間停靠站僅供下車，因此無法在臺中上車。\n如果你能前往臺北、板橋、中壢或新竹等起點站搭乘，以下是前往高雄的班次：\n- 車次 124：11/27 (Fri) 15:30 發車（起點：臺北車站），剩餘座位 20\n- 車次 302：11/27 (Fri) 15:30 發車（起點：中壢車站），剩餘座位 32\n- 車次 404：11/27 (Fri) 18:00 發車（起點：臺北車站），剩餘座位 30\n- 車次 304：11/27 (Fri) 18:00 發車（起點：新竹車站），剩餘座位 25\n- 車次 301：11/27 (Fri) 18:00 發車（起點：臺北車站），剩餘座位 14\n- 車次 203：11/28 (Sat) 07:30 發車（起點：臺北車站），剩餘座位 17\n（座位數依官方檢視表，更新日期 2026/11/03）",
+    "trace": [
+     {
+      "tool": "search_routes",
+      "arguments": {
+       "to_station": "高雄",
+       "from_station": "臺中"
+      },
+      "result": {
+       "seats": {
+        "source": "official Google Sheet",
+        "sheet_updated": "2026/11/03",
+        "read_at": "2026-11-09 22:13",
+        "text": "官方座位檢視表（表上更新日期 2026/11/03，本系統讀取時間 2026-11-09 22:13）"
+       },
+       "boarding_rule": "You can get on only at the first station (get_on_at). Stops are get-off only.",
+       "note": "No route starts at '臺中' and goes to '高雄'. Routes 124, 301 only pass '臺中' as a stop, where nobody can get on. The routes below start at other stations.",
+       "found": 9,
+       "routes": [
+        {
+         "route_id": "102",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "板橋車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 29,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "124",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 20,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "302",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "中壢車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 32,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "406",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "高雄車站",
+         "destination": "屏東車站",
+         "seats_left": 10,
+         "sold_out": false,
+         "get_off_type": "stop (get off only)"
+        },
+        {
+         "route_id": "301",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 14,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "304",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "新竹車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 25,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "404",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "桃園車站",
+         "destination": "高雄車站",
+         "seats_left": 30,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "405",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "斗六車站",
+         "destination": "高雄車站",
+         "seats_left": 21,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "203",
+         "date": "2026-11-28 (Sat)",
+         "depart_time": "07:30",
+         "gather_time": "not announced (see the trip notice)",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": null,
+         "destination": "高雄車站",
+         "seats_left": 17,
+         "sold_out": false,
+         "get_off_type": "destination"
+        }
+       ]
+      }
+     }
+    ],
+    "info": {
+     "votes": {
+      "A": "route",
+      "B": "route",
+      "C": "route"
+     },
+     "similarity_B": 0.746,
+     "weights": {
+      "A": 0.955,
+      "B": 0.773,
+      "C": 0.882
+     },
+     "short_cut": false,
+     "category": "route",
+     "agreement": 1.0,
+     "scores": {
+      "route": 2.61
+     },
+     "problems": [],
+     "review": "passed",
+     "confidence": 1.0,
+     "needs_human": false,
+     "chat_calls": 2,
+     "mode": "v2"
+    },
+    "problems": [],
+    "rules_ok": true
+   },
+   {
+    "answer": "提醒您，返鄉列車規定**只能在第一站（上車站）上車**，中途站（如臺中車站）僅供下車，無法在臺中上車。\n\n如果您願意前往其他起點站搭乘，以下是前往高雄的車次參考：\n- **第 124 車次**：2026-11-27 (Fri) 15:30 發車，起點為臺北車站，剩餘座位 20\n- **第 301 車次**：2026-11-27 (Fri) 18:00 發車，起點為臺北車站，剩餘座位 14\n- **第 304 車次**：2026-11-27 (Fri) 18:00 發車，起點為新竹車站，剩餘座位 25\n- **第 404 車次**：2026-11-27 (Fri) 18:00 發車，起點為臺北車站，剩餘座位 30\n- **第 405 車次**：2026-11-27 (Fri) 18:00 發車，起點為臺北車站，剩餘座位 21\n- **第 203 車次**：2026-11-28 (Sat) 07:30 發車，起點為臺北車站，剩餘座位 17\n\n（座位數依官方檢視表，更新日期 2026/11/03）",
+    "trace": [
+     {
+      "tool": "search_routes",
+      "arguments": {
+       "from_station": "臺中",
+       "to_station": "高雄"
+      },
+      "result": {
+       "seats": {
+        "source": "official Google Sheet",
+        "sheet_updated": "2026/11/03",
+        "read_at": "2026-11-09 22:13",
+        "text": "官方座位檢視表（表上更新日期 2026/11/03，本系統讀取時間 2026-11-09 22:13）"
+       },
+       "boarding_rule": "You can get on only at the first station (get_on_at). Stops are get-off only.",
+       "note": "No route starts at '臺中' and goes to '高雄'. Routes 124, 301 only pass '臺中' as a stop, where nobody can get on. The routes below start at other stations.",
+       "found": 9,
+       "routes": [
+        {
+         "route_id": "102",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "板橋車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 29,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "124",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 20,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "302",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "中壢車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 32,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "406",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "高雄車站",
+         "destination": "屏東車站",
+         "seats_left": 10,
+         "sold_out": false,
+         "get_off_type": "stop (get off only)"
+        },
+        {
+         "route_id": "301",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 14,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "304",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "新竹車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 25,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "404",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "桃園車站",
+         "destination": "高雄車站",
+         "seats_left": 30,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "405",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "斗六車站",
+         "destination": "高雄車站",
+         "seats_left": 21,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "203",
+         "date": "2026-11-28 (Sat)",
+         "depart_time": "07:30",
+         "gather_time": "not announced (see the trip notice)",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": null,
+         "destination": "高雄車站",
+         "seats_left": 17,
+         "sold_out": false,
+         "get_off_type": "destination"
+        }
+       ]
+      }
+     }
+    ],
+    "info": {
+     "votes": {
+      "A": "route",
+      "B": "route",
+      "C": "route"
+     },
+     "similarity_B": 0.746,
+     "weights": {
+      "A": 0.955,
+      "B": 0.773,
+      "C": 0.882
+     },
+     "short_cut": false,
+     "category": "route",
+     "agreement": 1.0,
+     "scores": {
+      "route": 2.61
+     },
+     "problems": [],
+     "review": "passed",
+     "confidence": 1.0,
+     "needs_human": false,
+     "chat_calls": 2,
+     "mode": "v2"
+    },
+    "problems": [],
+    "rules_ok": true
+   },
+   {
+    "answer": "「2026 青年民主返鄉列車」的所有班次皆**僅限於首發站上車**，中途停靠站僅供下車，因此無法在臺中上車。\n如果你願意前往首發站（如臺北、板橋、中壢或新竹）搭乘，以下是前往高雄的班次與剩餘座位：\n\n- **102 號車**（11/27 15:30，首發站：板橋車站）｜剩餘座位：29\n- **124 號車**（11/27 15:30，首發站：臺北車站）｜剩餘座位：20\n- **302 號車**（11/27 15:30，首發站：中壢車站）｜剩餘座位：32\n- **301 號車**（11/27 18:00，首發站：臺北車站）｜剩餘座位：14\n- **304 號車**（11/27 18:00，首發站：新竹車站）｜剩餘座位：25\n- **404 號車**（11/27 18:00，首發站：臺北車站）｜剩餘座位：30\n- **405 號車**（11/27 18:00，首發站：臺北車站）｜剩餘座位：21\n- **203 號車**（11/28 07:30，首發站：臺北車站）｜剩餘座位：17\n\n（座位數依官方檢視表，更新日期 2026/11/03）",
+    "trace": [
+     {
+      "tool": "search_routes",
+      "arguments": {
+       "from_station": "臺中",
+       "to_station": "高雄"
+      },
+      "result": {
+       "seats": {
+        "source": "official Google Sheet",
+        "sheet_updated": "2026/11/03",
+        "read_at": "2026-11-09 22:14",
+        "text": "官方座位檢視表（表上更新日期 2026/11/03，本系統讀取時間 2026-11-09 22:14）"
+       },
+       "boarding_rule": "You can get on only at the first station (get_on_at). Stops are get-off only.",
+       "note": "No route starts at '臺中' and goes to '高雄'. Routes 124, 301 only pass '臺中' as a stop, where nobody can get on. The routes below start at other stations.",
+       "found": 9,
+       "routes": [
+        {
+         "route_id": "102",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "板橋車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 29,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "124",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 20,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "302",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "中壢車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 32,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "406",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "高雄車站",
+         "destination": "屏東車站",
+         "seats_left": 10,
+         "sold_out": false,
+         "get_off_type": "stop (get off only)"
+        },
+        {
+         "route_id": "301",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 14,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "304",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "新竹車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 25,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "404",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "桃園車站",
+         "destination": "高雄車站",
+         "seats_left": 30,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "405",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "斗六車站",
+         "destination": "高雄車站",
+         "seats_left": 21,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "203",
+         "date": "2026-11-28 (Sat)",
+         "depart_time": "07:30",
+         "gather_time": "not announced (see the trip notice)",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": null,
+         "destination": "高雄車站",
+         "seats_left": 17,
+         "sold_out": false,
+         "get_off_type": "destination"
+        }
+       ]
+      }
+     }
+    ],
+    "info": {
+     "votes": {
+      "A": "route",
+      "B": "route",
+      "C": "route"
+     },
+     "similarity_B": 0.746,
+     "weights": {
+      "A": 0.955,
+      "B": 0.773,
+      "C": 0.882
+     },
+     "short_cut": false,
+     "category": "route",
+     "agreement": 1.0,
+     "scores": {
+      "route": 2.61
+     },
+     "problems": [],
+     "review": "passed",
+     "confidence": 1.0,
+     "needs_human": false,
+     "chat_calls": 2,
+     "mode": "v2"
+    },
+    "problems": [],
+    "rules_ok": true
+   },
+   {
+    "answer": "返鄉列車規定「乘客只能在首發站上車」，中間停靠站僅供下車，因此無車次可直接從臺中上車。\n\n不過，你可以選擇從北部（如臺北、板橋、中壢、新竹）搭乘有經過或抵達高雄的班次：\n\n- **124號**：11/27 (五) 15:30 發車（臺北車站上車，臺中車站僅供下車，終點高雄車站），剩餘座位 20\n- **301號**：11/27 (五) 18:00 發車（臺北車站上車，臺中車站僅供下車，終點高雄車站），剩餘座位 14\n- **102號**：11/27 (五) 15:30 發車（板橋車站上車，終點高雄車站），剩餘座位 29\n- **302號**：11/27 (五) 15:30 發車（中壢車站上車，終點高雄車站），剩餘座位 32\n- **304號**：11/27 (五) 18:00 發車（新竹車站上車，終點高雄車站），剩餘座位 25\n- **404號**：11/27 (五) 18:00 發車（臺北車站上車，終點高雄車站），剩餘座位 30\n- **405號**：11/27 (五) 18:00 發車（臺北車站上車，終點高雄車站），剩餘座位 21\n- **203號**：11/28 (Sat) 07:30 發車（臺北車站上車，終點高雄車站），剩餘座位 17\n- **406號**：11/27 (五) 15:30 發車（臺北車站上車，高雄車站下車），剩餘座位 10\n\n（座位數依官方檢視表，更新日期 2026/11/03）",
+    "trace": [
+     {
+      "tool": "search_routes",
+      "arguments": {
+       "from_station": "臺中",
+       "to_station": "高雄"
+      },
+      "result": {
+       "seats": {
+        "source": "official Google Sheet",
+        "sheet_updated": "2026/11/03",
+        "read_at": "2026-11-09 22:14",
+        "text": "官方座位檢視表（表上更新日期 2026/11/03，本系統讀取時間 2026-11-09 22:14）"
+       },
+       "boarding_rule": "You can get on only at the first station (get_on_at). Stops are get-off only.",
+       "note": "No route starts at '臺中' and goes to '高雄'. Routes 124, 301 only pass '臺中' as a stop, where nobody can get on. The routes below start at other stations.",
+       "found": 9,
+       "routes": [
+        {
+         "route_id": "102",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "板橋車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 29,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "124",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 20,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "302",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "中壢車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 32,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "406",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "高雄車站",
+         "destination": "屏東車站",
+         "seats_left": 10,
+         "sold_out": false,
+         "get_off_type": "stop (get off only)"
+        },
+        {
+         "route_id": "301",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 14,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "304",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "新竹車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 25,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "404",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "桃園車站",
+         "destination": "高雄車站",
+         "seats_left": 30,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "405",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "斗六車站",
+         "destination": "高雄車站",
+         "seats_left": 21,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "203",
+         "date": "2026-11-28 (Sat)",
+         "depart_time": "07:30",
+         "gather_time": "not announced (see the trip notice)",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": null,
+         "destination": "高雄車站",
+         "seats_left": 17,
+         "sold_out": false,
+         "get_off_type": "destination"
+        }
+       ]
+      }
+     }
+    ],
+    "info": {
+     "votes": {
+      "A": "route",
+      "B": "route",
+      "C": "route"
+     },
+     "similarity_B": 0.746,
+     "weights": {
+      "A": 0.955,
+      "B": 0.773,
+      "C": 0.882
+     },
+     "short_cut": false,
+     "category": "route",
+     "agreement": 1.0,
+     "scores": {
+      "route": 2.61
+     },
+     "problems": [],
+     "review": "passed",
+     "confidence": 1.0,
+     "needs_human": false,
+     "chat_calls": 2,
+     "mode": "v2"
+    },
+    "problems": [],
+    "rules_ok": true
+   },
+   {
+    "answer": "「2026 青年民主返鄉列車」規定乘客只能在起點站（第一站）上車，中途停靠站僅供下車，因此無法從臺中上車。\n\n不過，你可以選擇從其他起點站（如臺北、板橋、中壢或新竹）搭乘有經過或抵達高雄的班次：\n- **第 124 車次**（11/27 15:30）：起點站為臺北車站，目的地為高雄車站（剩餘座位：20）\n- **第 301 車次**（11/27 18:00）：起點站為臺北車站，目的地為高雄車站（剩餘座位：14）\n- **第 304 車次**（11/27 18:00）：起點站為新竹車站，目的地為高雄車站（剩餘座位：25）\n- **第 404 車次**（11/27 18:00）：起點站為臺北車站，目的地為高雄車站（剩餘座位：30）\n- **第 405 車次**（11/27 18:00）：起點站為臺北車站，目的地為高雄車站（剩餘座位：21）\n- **第 203 車次**（11/28 07:30）：起點站為臺北車站，目的地為高雄車站（剩餘座位：17）\n\n（座位數依官方檢視表，更新日期 2026/11/03）",
+    "trace": [
+     {
+      "tool": "search_routes",
+      "arguments": {
+       "from_station": "臺中",
+       "to_station": "高雄"
+      },
+      "result": {
+       "seats": {
+        "source": "official Google Sheet",
+        "sheet_updated": "2026/11/03",
+        "read_at": "2026-11-09 22:14",
+        "text": "官方座位檢視表（表上更新日期 2026/11/03，本系統讀取時間 2026-11-09 22:14）"
+       },
+       "boarding_rule": "You can get on only at the first station (get_on_at). Stops are get-off only.",
+       "note": "No route starts at '臺中' and goes to '高雄'. Routes 124, 301 only pass '臺中' as a stop, where nobody can get on. The routes below start at other stations.",
+       "found": 9,
+       "routes": [
+        {
+         "route_id": "102",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "板橋車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 29,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "124",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 20,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "302",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "中壢車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 32,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "406",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "15:30",
+         "gather_time": "14:30",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "高雄車站",
+         "destination": "屏東車站",
+         "seats_left": 10,
+         "sold_out": false,
+         "get_off_type": "stop (get off only)"
+        },
+        {
+         "route_id": "301",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "臺中車站",
+         "destination": "高雄車站",
+         "seats_left": 14,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "304",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "新竹車站",
+         "stop_get_off_only": "臺南車站",
+         "destination": "高雄車站",
+         "seats_left": 25,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "404",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "桃園車站",
+         "destination": "高雄車站",
+         "seats_left": 30,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "405",
+         "date": "2026-11-27 (Fri)",
+         "depart_time": "18:00",
+         "gather_time": "17:00",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": "斗六車站",
+         "destination": "高雄車站",
+         "seats_left": 21,
+         "sold_out": false,
+         "get_off_type": "destination"
+        },
+        {
+         "route_id": "203",
+         "date": "2026-11-28 (Sat)",
+         "depart_time": "07:30",
+         "gather_time": "not announced (see the trip notice)",
+         "get_on_at": "臺北車站",
+         "stop_get_off_only": null,
+         "destination": "高雄車站",
+         "seats_left": 17,
+         "sold_out": false,
+         "get_off_type": "destination"
+        }
+       ]
+      }
+     }
+    ],
+    "info": {
+     "votes": {
+      "A": "route",
+      "B": "route",
+      "C": "route"
+     },
+     "similarity_B": 0.746,
+     "weights": {
+      "A": 0.955,
+      "B": 0.773,
+      "C": 0.882
+     },
+     "short_cut": false,
+     "category": "route",
+     "agreement": 1.0,
+     "scores": {
+      "route": 2.61
+     },
+     "problems": [],
+     "review": "passed",
+     "confidence": 1.0,
+     "needs_human": false,
+     "chat_calls": 2,
+     "mode": "v2"
+    },
+    "problems": [],
+    "rules_ok": true
+   }
+  ]
+ }
+}

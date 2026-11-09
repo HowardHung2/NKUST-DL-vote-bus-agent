@@ -1,0 +1,27 @@
+{
+ "made": "2026-11-09 22:01",
+ "from": "dev questions in eval_questions.csv",
+ "formula": "(correct votes + 1) / (votes cast + 2)",
+ "weights": {
+  "A": 0.955,
+  "B": 0.773,
+  "C": 0.882
+ },
+ "detail": {
+  "A": {
+   "weight": 0.955,
+   "correct": 20,
+   "cast": 20
+  },
+  "B": {
+   "weight": 0.773,
+   "correct": 16,
+   "cast": 20
+  },
+  "C": {
+   "weight": 0.882,
+   "correct": 14,
+   "cast": 15
+  }
+ }
+}
